@@ -1,29 +1,34 @@
 ---
-title: Two things are infinite the universe and human stupidity
-subTitle: And I'm not sure about the universe.
+title: 10 Reason why you should use Docker
+subTitle: why to use Docker Containers
 category: "sayings"
-cover: photo-1490474418585-ba9bad8fd0ea-cover.jpg
+cover: banner.png
 ---
 
-Proin suscipit luctus orci placerat fringilla. Donec hendrerit laoreet risus eget adipiscing. Suspendisse in urna ligula, a volutpat mauris. Sed enim mi, [adipiscing](http://google.com) eu pulvinar vel, sodales vitae dui. :thumbsup: :smile: :sparkler:
 
-```javascript
-a=3
-puts a
-```
+It works on everyone’s machine. Docker eliminates the “but it worked on my laptop” problem.
+“I love docker because it takes environment specific issues out of the equation – making the developer’s life easier and improving productivity by reducing time wasted debugging issues that ultimately don’t add value to the application.” @pamstr_
 
-Pellentesque `sed` sapien lorem, at lacinia urna. In hac habitasse platea dictumst. Vivamus vel justo in leo laoreet ullamcorper non vitae lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin bibendum ullamcorper rutrum.
+- Takes the pain out of CI/CD. If there is one thing developers hate, it is doing the same thing over and over.
+  “Docker completely changed my life as a developer! I can spin up my project dependencies like databases for my application in a second in a clean state on any machine on our team! I can‘t not imagine the whole ci/cd-approach without docker. Automate all the stuff? Dockerize it!” 
 
-Fusce a metus eu diam varius congue nec nec sapien. Vestibulum orci tortor, sollicitudin ac euismod non, placerat ac augue. Nunc convallis accumsan justo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec malesuada vehicula lectus, viverra sodales ipsum gravida nec.
+- Boosts your career. According to a recent Indeed report, in the last year, job postings listing Docker as a preferred skill have increased almost 50%. And the share of job searches per million including Docker has increased 9,538% since 2014.
+  Makes cool tech accessible. Whether you’re building your robot, experimenting with AI, or programming a Raspberry Pi, Docker makes it easy to work with interesting new technologies.
+- “I really find Docker an amazing piece of open platform which lets me to convert my Raspberry Pi’s into CCTV camera using Docker containers, pushing the live streaming data to Amazon Rekognition Service for Deep Learning & Facial Recognition using a single Docker Compose file.” @ajeetsraina (Docker Captain)
 
-> Proin ornare ligula eu tellus tempus elementum. Aenean bibendum iaculis mi, nec blandit lacus interdum vitae. Vestibulum non nibh risus, a scelerisque purus. Ut vel arcu ac tortor adipiscing hendrerit vel sed massa. Fusce sem libero, lacinia vulputate interdum non, porttitor non quam. Aliquam sed felis ligula. Duis non nulla magna.
+- Raises productivity. It’s easier to ramp up quickly and there’s less busy-work with Docker.
+“With containerized environments, my time from zero to contribution is almost non-existent. Same thing applies when switching to another project with completely different requirements. I can finally spend more time writing code and less time getting to the point of writing code. Oh! And I know it’ll work the same way in my build pipelines and prod!” @mikesir87 (Docker Captain)
 
-Nullam eros mi, mollis in sollicitudin non, tincidunt sed enim. Sed et felis metus, rhoncus ornare nibh. Ut at magna leo. Suspendisse egestas est ac dolor imperdiet pretium. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam porttitor, erat sit amet venenatis luctus, augue libero ultrices quam, ut congue nisi risus eu purus. Cras semper consectetur elementum.
+- Standardize Development + Deployments. Containers drive repeatability across processes, making it easier for both dev and ops, and ultimately driving business value. 
+“Docker enables us to standardize our application deployment and development across On-Prem and Cloud platforms. We can now bring more value to our customers faster and standardized.” @idomyowntricks (Docker Captain)
 
-### Cras semper consectetur elementum
+- Makes cloud migration easy. Docker runs on all the major cloud providers and operating systems, so apps containterized with Docker are portable across datacenters and clouds.
+“Currently Docker is a key piece for migration to the cloud, for that reason is the most wanted and loved platform for the architects and developers 🐋” @herrera_luis10 
 
-Pellentesque sed sapien lorem, at lacinia urna. In hac habitasse platea dictumst. Vivamus vel justo in leo laoreet ullamcorper non vitae lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin bibendum ullamcorper rutrum.
+- Application upgrades are a lot easier. That’s true even for complex applications.
+“I switched from Oracle 11g to 12c to 18c using Docker containers a few days ago. It worked absolutely painless on my Windows 10 workstation for testing purposes. I love working this way so much! Thanks Docker!” @dthater 
 
-![unsplash.com](./photo-1490474418585-ba9bad8fd0ea.jpg)
+- it’s easy to fix. Rolling back to a known good state is simple with Docker.
+“Love it because I broke my local PostgreSQL installation and decided that was the reason to switch to using a Docker compose file. Was up and running again in an hour, haven’t looked back” @J_Kreutzbender 
 
-Proin suscipit luctus orci placerat fringilla. Donec hendrerit laoreet risus eget adipiscing. Suspendisse in urna ligula, a volutpat mauris. Sed enim mi, bibendum eu pulvinar vel, sodales vitae dui. Pellentesque sed sapien lorem, at lacinia urna. In hac habitasse platea dictumst. Vivamus vel justo in leo laoreet ullamcorper non vitae lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin bibendum ullamcorper rutrum.
+- It’s easy to try out new apps. Testing new applications is much easier when you don’t have to build out infrastructure each time.
