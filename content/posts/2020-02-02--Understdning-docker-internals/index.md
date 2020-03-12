@@ -99,7 +99,8 @@ While this example above is helpful, most of the time you will have multiple app
 In most of the real-life cases your applications will have external dependencies, such as databases, message queues or other external services that your application communicates with, and you need a reliable and easy to use way of bringing these dependencies into your development environment. While you can run everything as Docker containers, it quickly becomes cumbersome to manage the containers along with the application itself; and Docker has a very good solution for this: [Docker Compose](https://docs.docker.com/compose/).
 
 According to Docker:
-> Compose is a tool for defining and running multi-container Docker applications. With Compose, you use a YAML file to configure your application’s services. Then, with a single command, you create and start all the services from your configuration.
+
+Compose is a tool for defining and running multi-container Docker applications. With Compose, you use a YAML file to configure your application’s services. Then, with a single command, you create and start all the services from your configuration.
 
 As explained, Docker Compose allows you to define your full application including its dependencies with a single file, which makes the development process incredibly easy. By using Compose, you get:
 
