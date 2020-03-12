@@ -1,8 +1,8 @@
 ---
-title: 10 Reason why you should use Docker
-subTitle: why to use Docker Containers
-category: "sayings"
-cover: banner.png
+title: Understanding Docker Internals
+subTitle: Understanding Docker Internals
+category: "docker"
+cover: banner.jpeg
 ---
 
 # What Exactly is Docker?
