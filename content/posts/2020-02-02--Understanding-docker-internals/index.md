@@ -44,7 +44,6 @@ So, let’s say you have a 1 GB container image; if you wanted to use a full VM,
 
 A full virtualized system gets its own set of resources allocated to it, and does minimal sharing. You get more isolation, but it is much heavier (requires more resources). With Docker you get less isolation, but the containers are lightweight (require fewer resources). So you could easily run thousands of containers on a host, and it won’t even blink.*
 
-![Comparison of containers and virtual machines, [by Docker](https://www.docker.com/resources/what-container)](https://cdn-images-1.medium.com/max/4932/1*tAAJ06mUHOwpRH7R5R9oeA.png)*Comparison of containers and virtual machines, [by Docker](https://www.docker.com/resources/what-container)*
 
 Docker has two concepts that is almost the same with its VM containers as the idea, an *image,* and a *container*. An image is the definition of what is going to be executed, just like an operating system image, and a container is the running instance of a given image.
 
