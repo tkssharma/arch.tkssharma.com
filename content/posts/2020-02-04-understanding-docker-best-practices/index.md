@@ -1,6 +1,6 @@
 ---
-title: Understanding Docker Compose for Application development
-subTitle: Understanding Docker compose
+title: Best Practices for working with Dockerfiles
+subTitle: Best Practices for working with Dockerfiles
 category: "docker"
 cover: banner.jpeg
 ---
