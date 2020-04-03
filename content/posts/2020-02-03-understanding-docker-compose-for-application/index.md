@@ -8,9 +8,7 @@ cover: banner.jpeg
 
 we’ve discussed how we can turn docker containers into development machines in my ealier posts. In this post, we’ll talk about how we will grip the strengths of docker containers to run a multi-container application. Let’s dive into the process.
 
-![This image has been used from google](https://cdn-images-1.medium.com/max/2000/1*JK4VDnsrF6YnAb2nyhMsdQ.png)*This image has been used from google*
-
-What is docker Compose? Why docker Compose?
+# What is docker Compose? Why docker Compose?
 
 Docker compose is a simple yet powerful tool that is used to run multiple containers as a single service.* For example*, suppose you have an application which requires Nginx as a web server and PostgreSQL as a database service. In this case by docker-compose, you can create one single file (docker-compose.yml ) which will create both the containers as a single service without starting each separately
 
