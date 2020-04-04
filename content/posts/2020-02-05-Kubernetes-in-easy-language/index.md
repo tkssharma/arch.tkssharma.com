@@ -7,7 +7,7 @@ cover: banner.png
 
 Kubernetes is Google's open source system for managing Linux containers across private, public and hybrid cloud environments.
 
-Kubernetes automates the deployment, scaling, maintenance, scheduling and operation of multiple application containers across clusters of nodes. Kubernetes contains tools for orchestration, service discovery and load balancing that can be used with Docker and Rocket containers. As needs change, a developer can move container workloads in Kubernetes to another cloud provider without changing the code.
+Kubernetes automates the ``deployment, scaling, maintenance, scheduling and operation of multiple application containers across clusters of nodes``. Kubernetes contains tools for orchestration, service discovery and load balancing that can be used with Docker and Rocket containers. As needs change, a developer can move container workloads in Kubernetes to another cloud provider without changing the code.
 
 With Kubernetes, containers run in pods. A pod is a basic unit that hosts one or multiple containers, which share resources and are located on the same physical or virtual machine. For each pod, Kubernetes finds a machine with enough compute capacity and launches the associated containers. A node agent, called a Kubelet, manages pods, their containers and their images. Kubelets also automatically restart a container if it fails.
 
