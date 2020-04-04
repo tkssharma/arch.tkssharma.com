@@ -39,4 +39,4 @@ In a blog post, Butcher describes the book as a way to bridge the gap between ge
 
 https://www.cncf.io/wp-content/uploads/2019/07/The-Illustrated-Childrens-Guide-to-Kubernetes.pdf
 
-[![](http://img.youtube.com/vi/4ht22ReBjno/0.jpg)](http://www.youtube.com/watch?v=4ht22ReBjno "K8S")
+[![K8S](http://img.youtube.com/vi/4ht22ReBjno/0.jpg)](http://www.youtube.com/watch?v=4ht22ReBjno)
