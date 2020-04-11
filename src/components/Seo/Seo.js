@@ -6,11 +6,11 @@ import config from "../../../content/meta/config";
 const Seo = props => {
   const { data, facebook } = props;
   const postTitle = ((data || {}).frontmatter || {}).title;
-  const postDescription = ((data || {}).frontmatter || {}).description;
+  const postDescription = ((data || {}).frontmatter || {}).subTitle;
   const postCover = ((data || {}).frontmatter || {}).cover;
   const postSlug = ((data || {}).fields || {}).slug;
 
-  console.log(((data || {}).frontmatter || {}));
+  console.log(((data || {}).frontmatter || {}), postSlug, postCover );
 
   const title = postTitle ? `${postTitle} - ${config.shortSiteTitle}` : config.siteTitle;
   const description = postDescription ? postDescription : config.siteDescription;
