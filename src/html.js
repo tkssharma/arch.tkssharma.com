@@ -39,18 +39,6 @@ module.exports = class HTML extends React.Component {
           <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
           <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
           <link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png" />
-       <meta charset="utf-8"/>
-       <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"/>
-        <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=contain"/>
-        <title>@tkssharma | DevOps Blogs</title>
-        <meta name="title" content="@Tkssharma Profile – DevOps Blogs"/>
-        <meta name="referrer" content="always"/>
-        <meta name="description" content="Hi, I’m Tarun.😎 Nice to meet you.I am Publisher, Trainer  Developer, working on Enterprise and open source Technologies JavaScript frameworks (React  Angular 2.x), I work with client side and server side javascript programming which includes node js or any other frameworks Currently working with JavaScript framework React &amp; Node js 🚀 with Graphql 🎉"/>
-       <meta name="keywords" content="TARUN, NODE JS, SHARMA, TARUN, TKSSHARMA DevOps Docker Kubernetes"/>
-        <meta property="og:title" content="Javascript Developers – @tkssharma"/>
-        <meta property="twitter:title" content="Javascript Developers – @tkssharma"/>
-        <meta property="og:url" content="https://medium.com/tkssharma"/>
-        <meta property="og:image" content="https://cdn-images-1.medium.com/max/1200/1*Ma0xo9WikLdWZNwjXpZ0_Q.png"/>
         </head>
         <body {...this.props.bodyAttributes}>
           <noscript>You need to enable JavaScript to run this app!</noscript>

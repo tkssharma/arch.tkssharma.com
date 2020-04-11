@@ -1,5 +1,7 @@
 # PersonalBlog
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3a70d475-bdaf-441a-a9ac-7cae15de0c8d/deploy-status)](https://app.netlify.com/sites/pensive-cori-4d2f18/deploys)
+
 A [GatsbyJS](https://www.gatsbyjs.org/) personal blog starter. <br /><br />
 
 [![GitHub license][mit-badge]][mit]
@@ -11,11 +13,9 @@ A [GatsbyJS](https://www.gatsbyjs.org/) personal blog starter. <br /><br />
 [![code style prettier][prettier-badge]][prettier]
 [![Tweet][twitter-badge]][twitter]
 
-  <br />
 
-![](static/screens/gatsby-starter-personal-blog.gif) <br />
-
-  <br />
+![](static/screens/gatsby-starter-personal-blog.gif)
+- Node V 9.10.0
 
 See the starter in action » [demo website](https://gatsby-starter-personal-blog.greglobinski.com/) <br />For more information visit » [dev.greglobinski.com/gatsby-starter-personal-blog](https://dev.greglobinski.com/gatsby-starter-personal-blog/)
 
