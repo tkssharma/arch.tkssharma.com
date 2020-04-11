@@ -11,11 +11,18 @@ const Seo = props => {
   const postSlug = ((data || {}).fields || {}).slug;
 
   console.log(((data || {}).frontmatter || {}), postSlug, postCover );
-
+   let imageUrl;
   const title = postTitle ? `${postTitle} - ${config.shortSiteTitle}` : config.siteTitle;
   const description = postDescription ? postDescription : config.siteDescription;
-  const image = postCover ? postCover.childImageSharp.resize.src : config.siteImage;
   const url = config.siteUrl + config.pathPrefix + postSlug;
+
+  if(postCover){
+    imageUrl = '';
+    imageUrl = postCover.childImageSharp.resize.src;
+    imageUrl = imageUrl ? config.siteUrl + config.pathPrefix +  imageUrl : config.siteImage
+  }
+
+  console.log(imageUrl);
 
   return (
     <Helmet
@@ -31,7 +38,7 @@ const Seo = props => {
       <meta property="og:url" content={url} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={image} />
+      <meta property="og:image" content={imageUrl} />
       <meta property="og:type" content="website" />
       <meta property="fb:app_id" content={facebook.appId} />
       {/* Twitter Card tags */}
@@ -43,7 +50,7 @@ const Seo = props => {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={image} />
+      <meta name="twitter:image" content={imageUrl} />
 
     </Helmet>
   );
