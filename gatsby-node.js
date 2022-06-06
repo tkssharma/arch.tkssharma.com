@@ -1,117 +1,176 @@
-const webpack = require("webpack");
-//const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
-const _ = require("lodash");
-const Promise = require("bluebird");
-const path = require("path");
-const { createFilePath } = require(`gatsby-source-filesystem`);
-const { store } = require(`./node_modules/gatsby/dist/redux`);
+const path = require('path')
 
-exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
-  const { createNodeField } = boundActionCreators;
-  if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({ node, getNode, basePath: `pages` });
-    const separtorIndex = ~slug.indexOf("--") ? slug.indexOf("--") : 0;
-    const shortSlugStart = separtorIndex ? separtorIndex + 2 : 0;
-    createNodeField({
-      node,
-      name: `slug`,
-      value: `${separtorIndex ? "/" : ""}${slug.substring(shortSlugStart)}`
-    });
-    createNodeField({
-      node,
-      name: `prefix`,
-      value: separtorIndex ? slug.substring(1, separtorIndex) : ""
-    });
-  }
-};
+const createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions
 
-exports.createPages = ({ graphql, boundActionCreators }) => {
-  const { createPage } = boundActionCreators;
+  const blogPage = path.resolve('./src/templates/post.js')
+  const notePage = path.resolve('./src/templates/note.js')
+  const pagePage = path.resolve('./src/templates/page.js')
+  const tagPage = path.resolve('./src/templates/tag.js')
+  const categoryPage = path.resolve('./src/templates/category.js')
 
-  return new Promise((resolve, reject) => {
-    const postTemplate = path.resolve("./src/templates/PostTemplate.js");
-    const pageTemplate = path.resolve("./src/templates/PageTemplate.js");
-    resolve(
-      graphql(
-        `
-          {
-            allMarkdownRemark(filter: { id: { regex: "//posts|pages//" } }, limit: 1000) {
-              edges {
-                node {
-                  id
-                  fields {
-                    slug
-                    prefix
-                  }
-                }
+  const result = await graphql(
+    `
+      {
+        allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+          edges {
+            node {
+              id
+              frontmatter {
+                title
+                tags
+                categories
+                template
+              }
+              fields {
+                slug
               }
             }
           }
-        `
-      ).then(result => {
-        if (result.errors) {
-          console.log(result.errors);
-          reject(result.errors);
         }
-
-        // Create posts and pages.
-        _.each(result.data.allMarkdownRemark.edges, edge => {
-          const slug = edge.node.fields.slug;
-          const isPost = /posts/.test(edge.node.id);
-
-          createPage({
-            path: slug,
-            component: isPost ? postTemplate : pageTemplate,
-            context: {
-              slug: slug
-            }
-          });
-        });
-      })
-    );
-  });
-};
-
-exports.modifyWebpackConfig = ({ config, stage }) => {
-  switch (stage) {
-    case "build-javascript":
-      {
-        let components = store.getState().pages.map(page => page.componentChunkName);
-        components = _.uniq(components);
-        config.plugin("CommonsChunkPlugin", webpack.optimize.CommonsChunkPlugin, [
-          {
-            name: `commons`,
-            chunks: [`app`, ...components],
-            minChunks: (module, count) => {
-              const vendorModuleList = []; // [`material-ui`, `lodash`];
-              const isFramework = _.some(
-                vendorModuleList.map(vendor => {
-                  const regex = new RegExp(`[\\\\/]node_modules[\\\\/]${vendor}[\\\\/].*`, `i`);
-                  return regex.test(module.resource);
-                })
-              );
-              return isFramework || count > 1;
-            }
-          }
-        ]);
-        // config.plugin("BundleAnalyzerPlugin", BundleAnalyzerPlugin, [
-        //   {
-        //     analyzerMode: "static",
-        //     reportFilename: "./report/treemap.html",
-        //     openAnalyzer: true,
-        //     logLevel: "error",
-        //     defaultSizes: "gzip"
-        //   }
-        // ]);
       }
-      break;
-  }
-  return config;
-};
+    `
+  )
 
-exports.modifyBabelrc = ({ babelrc }) => {
-  return {
-    ...babelrc,
-    plugins: babelrc.plugins.concat([`syntax-dynamic-import`, `dynamic-import-webpack`])
-  };
-};
+  if (result.errors) {
+    throw result.errors
+  }
+
+  const all = result.data.allMarkdownRemark.edges
+  const posts = all.filter((post) => post.node.frontmatter.template === 'post')
+  const pages = all.filter((post) => post.node.frontmatter.template === 'page')
+  const notes = all.filter((post) => post.node.frontmatter.template === 'note')
+  const tagSet = new Set()
+  const categorySet = new Set()
+
+  // =====================================================================================
+  // Posts
+  // =====================================================================================
+
+  posts.forEach((post, i) => {
+    const previous = i === posts.length - 1 ? null : posts[i + 1].node
+    const next = i === 0 ? null : posts[i - 1].node
+
+    if (post.node.frontmatter.tags) {
+      post.node.frontmatter.tags.forEach((tag) => {
+        tagSet.add(tag)
+      })
+    }
+
+    if (post.node.frontmatter.categories) {
+      post.node.frontmatter.categories.forEach((category) => {
+        categorySet.add(category)
+      })
+    }
+
+    createPage({
+      path: post.node.fields.slug,
+      component: blogPage,
+      context: {
+        slug: post.node.fields.slug,
+        previous,
+        next,
+      },
+    })
+  })
+
+  // =====================================================================================
+  // Pages
+  // =====================================================================================
+
+  pages.forEach((page) => {
+    createPage({
+      path: page.node.fields.slug,
+      component: pagePage,
+      context: {
+        slug: page.node.fields.slug,
+      },
+    })
+  })
+
+  // =====================================================================================
+  // Notes
+  // =====================================================================================
+
+  notes.forEach((note) => {
+    createPage({
+      path: `/notes/${slugify(note.node.fields.slug)}`,
+      component: notePage,
+      context: {
+        slug: note.node.fields.slug,
+      },
+    })
+  })
+
+  // =====================================================================================
+  // Tags
+  // =====================================================================================
+
+  const tagList = Array.from(tagSet)
+  tagList.forEach((tag) => {
+    createPage({
+      path: `/tags/${slugify(tag)}/`,
+      component: tagPage,
+      context: {
+        tag,
+      },
+    })
+  })
+
+  // =====================================================================================
+  // Categories
+  // =====================================================================================
+
+  const categoryList = Array.from(categorySet)
+  categoryList.forEach((category) => {
+    createPage({
+      path: `/categories/${slugify(category)}/`,
+      component: categoryPage,
+      context: {
+        category,
+      },
+    })
+  })
+}
+
+const createNode = ({ node, actions, getNode }) => {
+  const { createNodeField } = actions
+
+  // =====================================================================================
+  // Slugs
+  // =====================================================================================
+
+  let slug
+  if (node.internal.type === 'MarkdownRemark') {
+    const fileNode = getNode(node.parent)
+    const parsedFilePath = path.parse(fileNode.relativePath)
+
+    if (Object.prototype.hasOwnProperty.call(node.frontmatter, 'slug')) {
+      slug = `/${node.frontmatter.slug}/`
+    } else {
+      slug = `/${parsedFilePath.dir}/`
+    }
+
+    createNodeField({
+      name: 'slug',
+      node,
+      value: slug,
+    })
+  }
+}
+
+exports.createPages = createPages
+exports.onCreateNode = createNode
+
+// Helpers
+function slugify(str) {
+  return (
+    str &&
+    str
+      .match(
+        /[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g
+      )
+      .map((x) => x.toLowerCase())
+      .join('-')
+  )
+}

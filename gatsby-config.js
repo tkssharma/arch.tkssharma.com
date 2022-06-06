@@ -1,148 +1,36 @@
-require("dotenv").config();
-const config = require("./content/meta/config");
-
-const query = `{
-  allMarkdownRemark(filter: { id: { regex: "//posts|pages//" } }) {
-    edges {
-      node {
-        objectID: id
-        fields {
-          slug
-        }
-        internal {
-          content
-        }
-        frontmatter {
-          title
-          subTitle
-        }
-      }
-    }
-  }
-}`;
-
-const queries = [
-  {
-    query,
-    transformer: ({ data }) => data.allMarkdownRemark.edges.map(({ node }) => node)
-  }
-];
-
 module.exports = {
   siteMetadata: {
-    title: config.siteTitle,
-    description: config.siteDescription,
-    siteUrl: config.siteUrl,
-    pathPrefix: config.pathPrefix,
-    facebook: {
-      appId: "1919742861680993"
-    }
+    title: 'Tarun Sharma',
+    author: {
+      name: '@tkssharma',
+    },
+    pathPrefix: '/',
+    siteUrl: 'https://arch.tkssharma.com',
+    description:
+      'Software engineer and open-source creator. This is my digital garden.',
+    feedUrl: 'https://arch.tkssharma.com/rss.xml',
+    logo: 'https://arch.tkssharma.com/logo.png',
   },
   plugins: [
-    `gatsby-plugin-react-next`,
+    // ===================================================================================
+    // Meta
+    // ===================================================================================
+
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-netlify',
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-plugin-manifest',
       options: {
-        path: `${__dirname}/content/posts/`,
-        name: "posts"
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content/pages/`,
-        name: "pages"
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `parts`,
-        path: `${__dirname}/content/parts/`
-      }
-    },
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          `gatsby-plugin-sharp`,
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 800,
-              backgroundColor: "transparent"
-            }
-          },
-          {
-            resolve: `gatsby-remark-responsive-iframe`,
-            options: {
-              wrapperStyle: `margin-bottom: 2em`
-            }
-          },
-          `gatsby-remark-prismjs`,
-          `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-smartypants`
-        ]
-      }
-    },
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-catch-links`,
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: config.manifestName,
-        short_name: config.manifestShortName,
-        start_url: config.manifestStartUrl,
-        background_color: config.manifestBackgroundColor,
-        theme_color: config.manifestThemeColor,
-        display: config.manifestDisplay,
-        icons: [
-          {
-            src: "/icons/icon-48x48.png",
-            sizes: "48x48",
-            type: "image/png"
-          },
-          {
-            src: "/icons/icon-96x96.png",
-            sizes: "96x96",
-            type: "image/png"
-          },
-          {
-            src: "/icons/icon-144x144.png",
-            sizes: "144x144",
-            type: "image/png"
-          },
-          {
-            src: "/icons/icon-192x192.png",
-            sizes: "192x192",
-            type: "image/png"
-          },
-          {
-            src: "/icons/icon-256x256.png",
-            sizes: "256x256",
-            type: "image/png"
-          },
-          {
-            src: "/icons/icon-384x384.png",
-            sizes: "384x384",
-            type: "image/png"
-          },
-          {
-            src: "/icons/icon-512x512.png",
-            sizes: "512x512",
-            type: "image/png"
-          }
-        ]
-      }
-    },
-    `gatsby-plugin-offline`,
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: "UA-26353225-1"
-      }
+        name: 'Tarun Sharma',
+        short_name: 'Tarun Sharma',
+        description:
+          'Software engineer and open source creator. This is my digital garden.',
+        start_url: '/',
+        background_color: 'white',
+        theme_color: '#6b76f3',
+        display: 'minimal-ui',
+        icon: `static/logo.png`,
+      },
     },
     {
       resolve: `gatsby-plugin-feed`,
@@ -162,51 +50,151 @@ module.exports = {
         feeds: [
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.edges.map(edge => {
+              return allMarkdownRemark.edges.map((edge) => {
                 return Object.assign({}, edge.node.frontmatter, {
                   description: edge.node.excerpt,
+                  date: edge.node.frontmatter.date,
                   url: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  custom_elements: [{ "content:encoded": edge.node.html }]
-                });
-              });
+                  custom_elements: [
+                    { 'content:encoded': edge.node.html },
+                    { author: 'tarun.softengg@gmail.com' },
+                  ],
+                })
+              })
             },
             query: `
               {
                 allMarkdownRemark(
-                  limit: 1000,
-                  sort: { order: DESC, fields: [fields___prefix] },
-                  filter: { id: { regex: "//posts//" } }
+                  limit: 30,
+                  sort: { order: DESC, fields: [frontmatter___date] },
+                  filter: { frontmatter: { template: { eq: "post" } } }
                 ) {
                   edges {
                     node {
                       excerpt
                       html
-                      fields {
-                        slug
-                        prefix
+                      fields { 
+                        slug 
                       }
                       frontmatter {
                         title
+                        date
+                        template
                       }
                     }
                   }
                 }
               }
             `,
-            output: "/rss.xml"
-          }
-        ]
-      }
+            output: '/rss.xml',
+            title: 'Tarun Sharma | RSS Feed',
+          },
+        ],
+      },
     },
+
+    // ===================================================================================
+    // Images and static
+    // ===================================================================================
+
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     {
-      resolve: `gatsby-plugin-sitemap`
-    },
-    {
-      resolve: "gatsby-plugin-react-svg",
+      resolve: 'gatsby-source-filesystem',
       options: {
-        include: /svg-icons/
-      }
-    }
-  ]
-};
+        name: 'posts',
+        path: `${__dirname}/content/`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'assets',
+        path: `${__dirname}/static/`,
+      },
+    },
+
+    // ===================================================================================
+    // Markdown
+    // ===================================================================================
+
+    {
+      resolve: 'gatsby-transformer-remark',
+      options: {
+        plugins: [
+          'gatsby-remark-autolink-headers',
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 800,
+              // linkImagesToOriginal: false,
+              backgroundColor: 'transparent',
+            },
+          },
+          {
+            resolve: 'gatsby-remark-prismjs',
+            options: {
+              classPrefix: 'language-',
+              inlineCodeMarker: null,
+              aliases: {},
+              showLineNumbers: false,
+              noInlineHighlight: false,
+              prompt: {
+                user: 'root',
+                host: 'localhost',
+                global: true,
+              },
+            },
+          },
+        ],
+      },
+    },
+
+    // ===================================================================================
+    // Search
+    // ===================================================================================
+
+    {
+      resolve: 'gatsby-plugin-local-search',
+      options: {
+        name: 'pages',
+        engine: 'flexsearch',
+        engineOptions: {
+          encode: 'icase',
+          tokenize: 'forward',
+          async: false,
+        },
+        query: `
+          {
+            allMarkdownRemark(filter: { frontmatter: { template: { eq: "post" } } }) {
+              nodes {
+                id
+                frontmatter {
+                  title
+                  tags
+                  slug
+                  date(formatString: "MMMM DD, YYYY")
+                }
+                rawMarkdownBody
+              }
+            }
+          }
+        `,
+        ref: 'id',
+        index: ['title', 'tags'],
+        store: ['id', 'slug', 'title', 'tags', 'date'],
+        normalizer: ({ data }) =>
+          data.allMarkdownRemark.nodes.map((node) => ({
+            id: node.id,
+            slug: `/${node.frontmatter.slug}`,
+            title: node.frontmatter.title,
+            body: node.rawMarkdownBody,
+            tags: node.frontmatter.tags,
+            categories: node.frontmatter.categories,
+            date: node.frontmatter.date,
+          })),
+      },
+    },
+  ],
+}

@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "baseUrl": "src",
+    "jsx": "react",
+    "paths": {
+      "*": ["*", "src/*"]
+    }
+  },
+  "typeAcquisition": {
+    "enable": true
+  },
+  "typingOptions": {
+    "enableAutoDiscovery": true
+  },
+  "allowJS": true,
+  "include": ["src/**/*"]
+}

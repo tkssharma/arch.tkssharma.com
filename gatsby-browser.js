@@ -1,29 +1,9 @@
-import React from "react";
-import { Router } from "react-router-dom";
-import { Provider } from "react-redux";
-import PropTypes from "prop-types";
+require('prismjs/plugins/line-numbers/prism-line-numbers.css')
 
-import createStore from "./src/state/store";
+const React = require('react')
 
-// remove the JSS style tag generated on the server to avoid conflicts with the one added on the client
-// exports.onInitialClientRender = function() {
-//   // eslint-disable-next-line no-undef
-//   var ssStyles = window.document.getElementById("server-side-jss");
-//   ssStyles && ssStyles.parentNode.removeChild(ssStyles);
-// };
+export function wrapPageElement({ element, props }) {
+  const Layout = element.type.Layout ?? React.Fragment
 
-exports.replaceRouterComponent = ({ history }) => {
-  const store = createStore();
-
-  const ConnectedRouterWrapper = ({ children }) => (
-    <Provider store={store}>
-      <Router history={history}>{children}</Router>
-    </Provider>
-  );
-
-  ConnectedRouterWrapper.propTypes = {
-    children: PropTypes.object.isRequired
-  };
-
-  return ConnectedRouterWrapper;
-};
+  return <Layout {...props}>{element}</Layout>
+}
