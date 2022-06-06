@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto+Mono&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto+Mono&display=swap");
 
 :root {
   /* Colors */
@@ -38,16 +38,16 @@
   --page-width: 850px;
 
   /* Font */
-  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue',
-    'Roboto', Roboto, Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
-    'Segoe UI', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  --heading-font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue',
-    'Roboto', Roboto, Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
-    'Segoe UI', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  --post-font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue',
-    'Roboto', Roboto, Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
-    'Segoe UI', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  --code-font-family: Menlo, 'Roboto Mono', Courier New, monospace;
+  --font-family: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Roboto", Roboto,
+    Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Roboto", Roboto,
+    Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+  --post-font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Roboto", Roboto, Arial,
+    "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
+  --code-font-family: Menlo, "Roboto Mono", Courier New, monospace;
 }
 
 *,
@@ -187,7 +187,7 @@ table {
   -webkit-text-size-adjust: none;
 }
 
-table :not(pre) > code[class*='language-'] {
+table :not(pre) > code[class*="language-"] {
   font-size: 0.95rem !important;
 }
 
@@ -711,7 +711,7 @@ article h2 {
   border-bottom: 1px solid var(--light-border-color);
 }
 
-article h2 code[class*='language-'] {
+article h2 code[class*="language-"] {
   font-size: 1.8rem !important;
   border-bottom: 1px solid var(--border-color);
 }
@@ -720,7 +720,7 @@ article h3 {
   font-size: 1.8rem;
 }
 
-article h3 code[class*='language-'] {
+article h3 code[class*="language-"] {
   font-size: 1.6rem !important;
 }
 
@@ -730,7 +730,7 @@ article h4 {
   text-transform: uppercase;
 }
 
-article h4 code[class*='language-'] {
+article h4 code[class*="language-"] {
   font-size: 1rem !important;
 }
 
@@ -1403,4 +1403,112 @@ main {
 
 #resume section li {
   margin-bottom: 0.5rem;
+}
+
+@media (min-width: 620px) {
+  .note {
+    padding: 4rem 0;
+    margin: 3rem 0;
+  }
+}
+@media (min-width: 620px) {
+  .note .note-container {
+    padding: 3rem;
+  }
+}
+@media (min-width: 620px) {
+  .note .note-container {
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+.note .note-container p {
+  color: #ffffff;
+}
+.note .note-container {
+  color: #ffffff;
+  background: radial-gradient(circle at 20% 20%, #5183f5 25%, #4640ff 100%);
+  -webkit-box-shadow: 0.5rem 1.25rem 1.75rem 0 rgb(100 110 140 / 40%);
+  box-shadow: 0.5rem 1.25rem 1.75rem 0 rgb(100 110 140 / 40%);
+  color: hsla(0, 0%, 100%, 0.9);
+  border-radius: 4px;
+  padding: 1.5rem;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+@media (min-width: 620px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+.container {
+  max-width: 850px;
+  padding: 0 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 620px) {
+  .note .flex-author {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+}
+@media (min-width: 620px) {
+  .avatar {
+    max-width: 200px;
+    margin-right: 2rem;
+    margin-bottom: 0;
+  }
+}
+
+.avatar {
+  max-width: 100px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.note .note-container a.donate-button {
+  background: #0c49d4;
+}
+.donate-button, a.donate-button {
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 4px;
+  border: none;
+  background: #5183f5;
+  padding: 0.75rem 1rem;
+  color: #fff;
+}
+.patreon-button, a.patreon-button {
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 4px;
+  border: 2px solid #f96854;
+  background: #f96854;
+  padding: 0 1rem;
+  color: #fff!important;
+  margin: 0 0.5rem;
+}
+.youtube-button, a.youtube-button {
+display: inline-flex;
+align-items: center;
+border-radius: 4px;
+border: 2px solid #9d0d0f;
+background: #9d0d0f;
+padding: 0 1rem;
+color: #fff!important;
+margin: 0 0.5rem;
 }

@@ -1,23 +1,23 @@
 ---
 date: 2022-02-04
-title: 'Understanding Kubernetes Architecture In simple language'
-shortTitle: 'Understanding Kubernetes Architecture In simple language'
-description: 'Understanding Kubernetes Architecture In simple language'
+title: 'Best Practices for working with Dockerfile'
+shortTitle: 'Best Practices for working with Dockerfile'
+description: 'Best Practices for working with Dockerfile'
 template: post
-featuredImage: '../thumbnails/k8s.png'
-thumbnail: '../thumbnails/k8s.png'
-slug: understanding-kubernetes-architecture-made-easy
+featuredImage: '../thumbnails/docker.png'
+thumbnail: '../thumbnails/docker.png'
+slug: best-practices-of-using-dockerfile
 categories:
-  - k8s
+  - docker
   - microservice
   - aws
 tags:
-  - Kubernetes
+  - docker
   - k8s 
   - microservice
 ---
 
-# Best Practices for working with Dockerfiles
+# Best Practices for working with Dockerfile
 
 This guide assumes you are familiar with Docker and its build environment. Let's review some of the basic concepts before you start to put them into practice.
 
@@ -61,7 +61,7 @@ Some of the benefits Dockerfiles provide are:
 * Accountability: If you plan on sharing your images, it is often a good idea to provide the Dockerfile that created the image as a way for other users to audit the process.
 
 * Flexibility: Creating images from a Dockerfile allows you to override the defaults that interactive builds are given. This means that you do not have to provide as many runtime options to get the image to function as intended.
-> # Docker images have intermediate layers that increase reusability, decrease disk usage, and speed up docker build by allowing each step to be cached.
+* Docker images have intermediate layers that increase reusability, decrease disk usage, and speed up docker build by allowing each step to be cached.
 
 ![Image Source and Credits: [http://blog.bigstep.com/developers-love-docker/](http://blog.bigstep.com/developers-love-docker/)](https://cdn-images-1.medium.com/max/2000/1*rCBBYVVJBlnNdo2f3OVyWw.png)*Image Source and Credits: [http://blog.bigstep.com/developers-love-docker/](http://blog.bigstep.com/developers-love-docker/)*
 

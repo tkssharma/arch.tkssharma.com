@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Link, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import Helmet from 'react-helmet'
+import UserInfo from '../components/UserInfo'
 
 import { Layout } from '../components/Layout'
 import { SEO } from '../components/SEO'
@@ -68,6 +69,7 @@ export default function PostTemplate({ data }) {
         <h3>Comments</h3>
         <Comments commentBox={commentBox} />
       </section>
+      <UserInfo config={config} />
     </>
   )
 }
@@ -87,6 +89,20 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         tags
         description
+        featuredImage {
+          childImageSharp {
+            fixed(width: 800, height: 400) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+        }
+        thumbnail {
+          childImageSharp {
+            fixed(width: 400, height: 300) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+        }
       }
     }
   }

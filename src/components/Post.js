@@ -56,7 +56,7 @@ export const Post = ({ node, query, prefix, hideDate, yearOnly }) => {
         {node.thumbnail && (
           <Img
             fixed={node.thumbnail}
-            style={{ marginRight: '1rem', minWidth: '25px' }}
+            style={{ marginRight: '1rem', width: '25px', height: '25px' }}
           />
         )}
         {getTitle(node.title, query)}

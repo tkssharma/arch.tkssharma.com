@@ -126,6 +126,20 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             tags
+            featuredImage {
+              childImageSharp {
+                fixed(width: 800, height: 400) {
+                  ...GatsbyImageSharpFixed
+                }
+              }
+            }
+            thumbnail {
+              childImageSharp {
+                fixed(width: 400, height: 200) {
+                  ...GatsbyImageSharpFixed
+                }
+              }
+            }
           }
         }
       }
@@ -146,6 +160,20 @@ export const pageQuery = graphql`
             title
             shortTitle
             tags
+            featuredImage {
+              childImageSharp {
+                fixed(width: 800, height: 400) {
+                  ...GatsbyImageSharpFixed
+                }
+              }
+            }
+            thumbnail {
+              childImageSharp {
+                fixed(width: 500, height: 300) {
+                  ...GatsbyImageSharpFixed
+                }
+              }
+            }
           }
         }
       }
