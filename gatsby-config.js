@@ -17,6 +17,7 @@ module.exports = {
     // ===================================================================================
 
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-sitemap',
     'gatsby-plugin-netlify',
     {
       resolve: 'gatsby-plugin-manifest',
@@ -115,6 +116,22 @@ module.exports = {
       },
     },
 
+    {
+      resolve: `gatsby-plugin-advanced-sitemap`,
+      options: {
+        exclude: [
+          `/dev-404-page`,
+          `/404`,
+          `/404.html`,
+          `/tags`,
+          `/assets`,
+          `/loading`,
+          `/offline-plugin-app-shell-fallback`,
+        ],
+        createLinkInHead: true,
+        addUncaughtPages: true,
+      }
+    },
     // ===================================================================================
     // Markdown
     // ===================================================================================
