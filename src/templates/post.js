@@ -69,7 +69,6 @@ export default function PostTemplate({ data }) {
         <h3>Comments</h3>
         <Comments commentBox={commentBox} />
       </section>
-      <UserInfo config={config} />
     </>
   )
 }
