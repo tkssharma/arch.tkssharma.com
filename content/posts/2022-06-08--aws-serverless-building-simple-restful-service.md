@@ -13,6 +13,7 @@ categories:
   - sns
   - sqs
   - lambda
+  - Highlight
 tags:
   - aws
   - sns

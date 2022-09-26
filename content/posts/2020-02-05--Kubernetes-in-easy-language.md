@@ -11,6 +11,7 @@ categories:
   - k8s
   - microservice
   - aws
+  - Highlight
 tags:
   - Kubernetes
   - k8s 

@@ -10,6 +10,7 @@ slug: deploying-aws-lambda-using-aws-cdk
 categories:
   - aws
   - cdk
+  - Highlight
 tags:
   - aws
   - serverless

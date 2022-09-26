@@ -135,7 +135,7 @@ export const pageQuery = graphql`
             }
             thumbnail {
               childImageSharp {
-                fixed(width: 400, height: 200) {
+                fixed(width: 200, height: 200) {
                   ...GatsbyImageSharpFixed
                 }
               }
@@ -169,7 +169,7 @@ export const pageQuery = graphql`
             }
             thumbnail {
               childImageSharp {
-                fixed(width: 800, height: 400) {
+                fixed(width: 200, height: 200) {
                   ...GatsbyImageSharpFixed
                 }
               }

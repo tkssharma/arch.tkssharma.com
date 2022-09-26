@@ -10,6 +10,7 @@ slug: aws-cdk-development-kit-for-developers
 categories:
   - aws
   - cdk
+  - Highlight
 tags:
   - aws
   - serverless
