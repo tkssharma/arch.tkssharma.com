@@ -1,5 +1,5 @@
 ---
-date: 2022-06-09
+date: 2023-06-01
 title: 'What is terraform and how to get started with it'
 shortTitle: 'What is terraform and how to get started with it'
 description: 'What is terraform and how to get started with it'
