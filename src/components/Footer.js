@@ -1,9 +1,10 @@
 import React from 'react'
 
-
-const links = [
-]
-const madeWithLinks = [
+const socialLinks = [
+  { url: 'https://github.com/tkssharma', label: 'GitHub' },
+  { url: 'https://twitter.com/tkssharma', label: 'Twitter' },
+  { url: 'https://www.youtube.com/user/vibbbbbba', label: 'YouTube' },
+  { url: 'https://www.linkedin.com/in/tkssharma', label: 'LinkedIn' },
 ]
 
 export const Footer = () => {
@@ -11,8 +12,12 @@ export const Footer = () => {
     <footer className="footer">
       <section>
         <nav>
-          <span className="desktop-only">Made by Tarun Sharma from gatsby Template</span>
-          {links.map((link) => (
+          <span className="desktop-only">
+            © {new Date().getFullYear()} Tarun Sharma • Built with Gatsby
+          </span>
+        </nav>
+        <nav>
+          {socialLinks.map((link) => (
             <a
               href={link.url}
               target="_blank"
@@ -20,20 +25,6 @@ export const Footer = () => {
               key={link.url}
             >
               {link.label}
-            </a>
-          ))}
-        </nav>
-        <nav>
-          {madeWithLinks.map((link) => (
-            <a
-              href={link.url}
-              title={link.label}
-              target="_blank"
-              rel="noopener noreferrer"
-              key={link.url}
-            >
-              <span>{link.label}</span>
-              <img src={link.icon} alt={link.label} />
             </a>
           ))}
         </nav>

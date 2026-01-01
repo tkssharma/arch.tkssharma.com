@@ -2,25 +2,19 @@ import React from 'react'
 import { Link } from 'gatsby'
 
 import { Hamburger } from '../assets/Hamburger'
-import moon from '../assets/moon.png'
-import blog from '../assets/nav-blog.png'
-import floppy from '../assets/nav-floppy.png'
-import github from '../assets/nav-github.png'
-import projects from '../assets/nav-projects.png'
-import twitter from '../assets/nav-twitter.png'
 
 const mainNavItems = [
-  { url: '/blog', icon: blog, label: 'Articles' },
-  { url: '/projects', icon: projects, label: 'Projects' },
-  { url: '/me', icon: floppy, label: 'About me' },
+  { url: '/blog', emoji: '📝', label: 'Articles' },
+  { url: '/projects', emoji: '🚀', label: 'Projects' },
+  { url: '/me', emoji: '👨‍💻', label: 'About' },
 ]
 
 const socialNavItems = [
-  { url: 'https://github.com/tkssharma', icon: github, label: 'GitHub' },
-  { url: 'https://twitter.com/tkssharma', icon: twitter, label: 'Twitter' },
+  { url: 'https://github.com/tkssharma', emoji: '🐙', label: 'GitHub' },
+  { url: 'https://twitter.com/tkssharma', emoji: '🐦', label: 'Twitter' },
 ]
 
-export const Navigation = ({ setCollapsed, onUpdateTheme, theme }) => {
+export const Navigation = ({ setCollapsed }) => {
   return (
     <header className="navigation">
       <div className="navigation-inner">
@@ -34,15 +28,15 @@ export const Navigation = ({ setCollapsed, onUpdateTheme, theme }) => {
           </button>
 
           <Link to="/" className="brand">
-            <span>Tarun Sharma</span>
+            <span>🌌 tkssharma</span>
           </Link>
         </nav>
         <div>
           <nav>
             {mainNavItems.map((item) => (
               <Link to={item.url} key={item.label} activeClassName="active">
-                <img src={item.icon} alt={item.label} />
-                <div className="tooltip">{item.label}</div>
+                <span className="nav-emoji">{item.emoji}</span>
+                <span className="nav-label">{item.label}</span>
               </Link>
             ))}
           </nav>
@@ -55,14 +49,12 @@ export const Navigation = ({ setCollapsed, onUpdateTheme, theme }) => {
                 target="_blank"
                 rel="noreferrer"
                 key={item.label}
+                title={item.label}
               >
-                <img src={item.icon} alt={item.label} />
+                <span className="nav-emoji">{item.emoji}</span>
               </a>
             ))}
           </nav>
-          <button onClick={onUpdateTheme} className="theme-switcher">
-            <img src={moon} alt="Theme" />
-          </button>
         </div>
       </div>
     </header>

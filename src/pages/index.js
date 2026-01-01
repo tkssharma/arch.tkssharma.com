@@ -40,40 +40,94 @@ export default function WebsiteIndex({ data }) {
       <Helmet title={config.siteTitle} />
       <SEO />
 
-      <article className="hero">
-        <header>
-          <div className="container">
-            <div className="flex-content">
-              <div>
-                <h1>Hey, I'm Tarun (@tkssharma)</h1>
-                <p className="subtitle small">
-                  I'm a full stack software developer creating open source projects and writing about modern JavaScript client-side and server side. Working remotely from India.
-                </p>
-              </div>
-              <img src={looking} alt="Me" className="main-image" />
-            </div>
-            <p className="hero-buttons">
-              <Link to="/me" className="hero-button">
-                <img src={floppy} alt="Me" />
-                More about me
-              </Link>
-              {followers && (
-                <a
-                  href="https://github.com/tkssharma"
-                  target="_blank"
-                  className="hero-button"
-                  rel="noreferrer"
-                >
-                  <img src={github} alt="GitHub" />
-                  <span className="bright">
-                    {Number(followers).toLocaleString()}
-                  </span>
-                  {' followers on GitHub'}
-                </a>
-              )}
-            </p>
+      <section className="hero-section">
+        {/* Animated background elements */}
+        <div className="hero-bg">
+          <div className="hero-blob hero-blob-1"></div>
+          <div className="hero-blob hero-blob-2"></div>
+          <div className="hero-blob hero-blob-3"></div>
+          <div className="hero-wave"></div>
+          <div className="hero-particles">
+            <span className="particle particle-1"></span>
+            <span className="particle particle-2"></span>
+            <span className="particle particle-3"></span>
+            <span className="particle particle-4"></span>
+            <span className="particle particle-5"></span>
           </div>
-        </header>
+          <div className="hero-dots">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div className="hero-lines">
+            <span className="line line-1"></span>
+            <span className="line line-2"></span>
+          </div>
+        </div>
+
+        <div className="hero-content">
+          <div className="hero-text">
+            <h1 className="hero-title">
+              <span className="hero-greeting">Hello, I'm</span>
+              <span className="hero-name">Tarun Sharma</span>
+            </h1>
+            <p className="hero-subtitle">
+              AI-powered solutions architect specializing in <strong>Microservices</strong>, <strong>Cloud Infrastructure</strong> (AWS/GCP), and <strong>AI/ML Integration</strong>. Building scalable distributed systems and intelligent applications.
+            </p>
+            <div className="hero-cta">
+              <Link to="/blog" className="cta-button primary">
+                <span>Read Articles</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </Link>
+              <Link to="/me" className="cta-button secondary">
+                About Me
+              </Link>
+            </div>
+            {followers && (
+              <div className="hero-stats">
+                <a href="https://github.com/tkssharma" target="_blank" rel="noreferrer" className="stat-item">
+                  <span className="stat-number">{Number(followers).toLocaleString()}</span>
+                  <span className="stat-label">GitHub Followers</span>
+                </a>
+                <div className="stat-item">
+                  <span className="stat-number">500+</span>
+                  <span className="stat-label">Articles Written</span>
+                </div>
+                <div className="stat-item">
+                  <span className="stat-number">15+</span>
+                  <span className="stat-label">Years Experience</span>
+                </div>
+              </div>
+            )}
+          </div>
+          <div className="hero-visual">
+            <div className="hero-image-wrapper">
+              <img src={looking} alt="Tarun Sharma" className="hero-image" />
+              <div className="hero-image-glow"></div>
+            </div>
+            <div className="floating-badge badge-1">
+              <span>🤖</span> AI/ML
+            </div>
+            <div className="floating-badge badge-2">
+              <span>☁️</span> AWS
+            </div>
+            <div className="floating-badge badge-3">
+              <span>🔧</span> Microservices
+            </div>
+            <div className="floating-badge badge-4">
+              <span>🐳</span> Kubernetes
+            </div>
+            <div className="floating-badge badge-5">
+              <span>⚡</span> Terraform
+            </div>
+            <div className="floating-badge badge-6">
+              <span>🧠</span> LLMs
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <article className="hero">
 
         <div className="container">
           <h2 className="main-header">
