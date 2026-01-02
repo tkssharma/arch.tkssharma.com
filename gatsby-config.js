@@ -29,7 +29,7 @@ module.exports = {
           'Software engineer and open source creator. This is my digital garden.',
         start_url: '/',
         background_color: 'white',
-        theme_color: '#6b76f3',
+        theme_color: '#6b76f1',
         display: 'minimal-ui',
         icon: `static/logo.png`,
       },
