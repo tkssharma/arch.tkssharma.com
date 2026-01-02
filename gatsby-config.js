@@ -195,42 +195,6 @@ module.exports = {
       },
     },
     // ===================================================================================
-    // Markdown
-    // ===================================================================================
-
-    {
-      resolve: 'gatsby-transformer-remark',
-      options: {
-        plugins: [
-          'gatsby-remark-autolink-headers',
-          {
-            resolve: 'gatsby-remark-images',
-            options: {
-              maxWidth: 800,
-              // linkImagesToOriginal: false,
-              backgroundColor: 'transparent',
-            },
-          },
-          {
-            resolve: 'gatsby-remark-prismjs',
-            options: {
-              classPrefix: 'language-',
-              inlineCodeMarker: null,
-              aliases: {},
-              showLineNumbers: false,
-              noInlineHighlight: false,
-              prompt: {
-                user: 'root',
-                host: 'localhost',
-                global: true,
-              },
-            },
-          },
-        ],
-      },
-    },
-
-    // ===================================================================================
     // Search
     // ===================================================================================
 
